@@ -63,6 +63,17 @@
   _snapshotController.usesDrawViewHierarchyInRect = usesDrawViewHierarchyInRect;
 }
 
+- (void)setManualScale:(NSUInteger)manualScale
+{
+  NSAssert1(_snapshotController, @"%s cannot be called before [super setUp]", __FUNCTION__);
+  _snapshotController.manualScale = manualScale;
+}
+
+- (NSUInteger)manualScale
+{
+  return _snapshotController.manualScale;
+}
+
 #pragma mark - Public API
 
 - (NSString *)snapshotVerifyViewOrLayer:(id)viewOrLayer
@@ -172,7 +183,6 @@
   }
   return [[NSBundle bundleForClass:self.class].resourcePath stringByAppendingPathComponent:@"ReferenceImages"];
 }
-
 
 #pragma mark - Private API
 
